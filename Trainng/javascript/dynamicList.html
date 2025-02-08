@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dyanmic List</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="lists"></div>
+
+      <div class="form">
+        <input type="text" id="element" placeholder="Enter element name" />
+        <button class="add-item">Add Item</button>
+        <button class="remove-item">Remove From the list</button>
+        <button class="clear">Clear All</button>
+      </div>
+    </div>
+
+    <script>
+      const list = document.querySelector(".lists");
+      const elementInput = document.querySelector("#element");
+      const addItem = document.querySelector(".add-item");
+      const removeItem = document.querySelector(".remove-item");
+      const clearItem = document.querySelector(".clear");
+
+      let elementList = [];
+      addItem.addEventListener("click", () => {
+        if (elementInput.value === null || elementInput.value === undefined)
+          return;
+        elementList.push(elementInput.value.trim());
+
+        updateList();
+
+        elementInput.value = "";
+      });
+
+      removeItem.addEventListener("click", () => {
+        if (elementInput.value === "") return;
+        const index = elementList.indexOf(elementInput.value.trim());
+
+        if (index > -1) {
+          elementList.splice(index, 1);
+        }
+
+        updateList();
+        elementInput.value = "";
+      });
+
+      clearItem.addEventListener("click", () => {
+        elementList = [];
+        updateList();
+      });
+
+      function updateList() {
+        list.innerHTML = "";
+        elementList.forEach((element) => {
+          const item = document.createElement("div");
+          item.textContent = element;
+          list.appendChild(item);
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h2 class="head">Registration Form</h2>
+    </header>
+
+    <form action="#">
+      <!-- Name -->
+      <div>
+        <label for="name">Student Name</label>
+        <input
+          type="text"
+          name="Name"
+          id="name"
+          placeholder="Your Name"
+          required
+        />
+      </div>
+      <!-- Phone Number -->
+      <div>
+        <label for="phoneNumber">&reg; Phone Number</label>
+        <input
+          type="text"
+          name="phoneNumber"
+          id="phoneNumber"
+          placeholder="Enter Phone Number"
+          pattern="[0-9]{10}"
+          maxlength="10"
+          required
+        />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="Email">&copy; Email</label>
+        <input
+          type="email"
+          name="email"
+          id="Email"
+          placeholder="Your Email"
+          required
+        />
+      </div>
+
+      <!-- Age -->
+      <div>
+        <label for="age">18 &lt; Age &gt; 60</label>
+        <input
+          type="number"
+          name="age"
+          id="age"
+          placeholder="Your Age"
+          min="18"
+          max="60"
+          required
+        />
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label for="Email">Password</label>
+        <input
+          type="password"
+          name="Password"
+          id="Password"
+          placeholder="Your Password"
+          required
+          minlength="4"
+          maxlength="10"
+        />
+      </div>
+
+      <!-- Photo -->
+      <div>
+        <label for="photo">Photo</label>
+        <input
+          type="file"
+          name="photo"
+          id="photo"
+          placeholder="Your Photo"
+          required
+        />
+      </div>
+
+      <!-- Button -->
+      <div
+        style="padding: 0px 0px 10px 0px; display: flex; flex-direction: column"
+      >
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </body>
+</html>

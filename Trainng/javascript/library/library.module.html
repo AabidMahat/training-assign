@@ -1,0 +1,181 @@
+<script>
+  //Library Class
+  class Library {
+    #books = [];
+    #members = [];
+    #memberBorrowedBooks = [];
+    //Method to add Book
+    addBook(book) {
+      this.#books.push(book);
+    }
+    //Method to issue Book
+    issueBook(bookId, memberId) {
+      const book = this.#books.find((book) => book.id === bookId);
+      const member = this.#members.find((member) => member.id === memberId);
+
+      if (book && member) {
+        book.isAvailable = false;
+        const data = {
+          bookId,
+          memberId,
+        };
+        this.#memberBorrowedBooks.push(data);
+      } else {
+        console.log("No Book or Member Found");
+      }
+    }
+    //Method to return Book
+    returnBook(id) {
+      const book = this.#books.find((book) => book.id === id);
+
+      if (book) {
+        book.isAvailable = true;
+      } else {
+        console.log("No Book Found");
+      }
+    }
+    //Method to Get Book
+    getAllBooks() {
+      return this.#books;
+    }
+    //Method to Register Member
+    registerMember(member) {
+      this.#members.push(member);
+    }
+
+    getInfoAboutData() {
+      return this.#memberBorrowedBooks;
+    }
+  }
+  //Book Class
+  class Book {
+    #id;
+    #title;
+    #author;
+    isAvailable;
+
+    constructor(id, title, author) {
+      this.#id = id;
+      this.#title = title;
+      this.#author = author;
+      this.isAvailable = true;
+    }
+    //Method to get Details
+    getDetails() {
+      return {
+        id: this.#id,
+        title: this.#title,
+        author: this.#author,
+        isAvailable: this.isAvailable,
+      };
+    }
+  }
+  //Member Class
+  class Member {
+    #id;
+    #name;
+    #borrowBooks = [];
+
+    constructor(id, name) {
+      this.#id = id;
+      this.#name = name;
+    }
+    //Get Details Method
+    getDetails() {
+      return {
+        id: this.#id,
+        name: this.#name,
+      };
+    }
+  }
+
+  const library = new Library();
+  let exit = false;
+
+  while (!exit) {
+    let choice = prompt("Enter the choice 1)Books 2)Members 3)Exit");
+
+    switch (choice) {
+      case "1": {
+        let bookChoice = prompt("1) Add Book 2) Get All Books");
+
+        switch (bookChoice) {
+          case "1": {
+            let id = prompt("Enter the Book Id");
+            let title = prompt("Enter the book title");
+            let author = prompt("Enter the book author");
+
+            const book = new Book(id, title, author);
+
+            library.addBook(book.getDetails());
+
+            break;
+          }
+
+          case "2": {
+            console.log(library.getAllBooks());
+            break;
+          }
+
+          default:
+            break;
+        }
+        break;
+      }
+
+      case "2": {
+        let memberChoice = prompt(
+          "1) Register 2) Issue Book 3) Return Book 4) View Issued Book"
+        );
+
+        switch (memberChoice) {
+          case "1": {
+            let id = prompt("Enter the Member Id");
+            let name = prompt("Enter the Member Name");
+
+            const member = new Member(id, name);
+
+            library.registerMember(member.getDetails());
+
+            break;
+          }
+
+          case "2": {
+            let bookId = prompt("Enter the Book Id");
+            let memberId = prompt("Enter the Member Id");
+
+            library.issueBook(bookId, memberId);
+
+            break;
+          }
+
+          case "3": {
+            let bookId = prompt("Enter the Book Id");
+
+            library.returnBook(bookId);
+
+            break;
+          }
+
+          case "4": {
+            console.log(library.getInfoAboutData());
+
+            break;
+          }
+
+          default:
+            break;
+        }
+        break;
+      }
+
+      case "3":
+        exit = true;
+        break;
+
+      default:
+        console.log("Invalid choice, please try again.");
+        break;
+    }
+  }
+</script>

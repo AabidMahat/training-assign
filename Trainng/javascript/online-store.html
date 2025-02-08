@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Store System</title>
+  </head>
+  <body>
+    <script>
+      (function (price) {
+        let discount = 0.1;
+
+        let discountPrice = price * discount;
+
+        let finalPrice = price - discountPrice;
+
+        console.log(`Final Product Price using IIFE ${finalPrice}`);
+      })(+prompt("Enter Product Price"));
+
+      //   Using Closure
+
+      function createDiscount(discount) {
+        let price = 100;
+        let currentDiscount = 0.1;
+        return {
+          setDiscount: function () {
+            currentDiscount = discount;
+            return currentDiscount;
+          },
+          getCurrentDiscount: function () {
+            return currentDiscount;
+          },
+          productPrice: function () {
+            return price - currentDiscount * price;
+          },
+        };
+      }
+
+      const discountOperation = createDiscount(+prompt("Enter discount"));
+      console.log(`Current Discount ${discountOperation.getCurrentDiscount()}`);
+      console.log(`Setting the Discount ${discountOperation.setDiscount()}`);
+      console.log(
+        `Product Price after Discount ${discountOperation.productPrice()}`
+      );
+    </script>
+  </body>
+</html>

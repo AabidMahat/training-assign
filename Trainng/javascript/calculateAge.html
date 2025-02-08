@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Circle Area Calculator</h1>
+
+    <h2 id="showResult"></h2>
+
+    <script>
+      const showResult = document.querySelector("#showResult");
+      const radius = prompt("Enter the radius");
+
+      const calArea = () => 3.14 * Math.pow(radius, 2);
+
+      showResult.innerHTML = calArea();
+    </script>
+  </body>
+</html>

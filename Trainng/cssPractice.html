@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Css Practice 😁</title>
+  </head>
+
+  <style>
+    * {
+      text-align: center;
+    }
+
+    .adjecent-sibling h3 + p {
+      color: red;
+    }
+
+    .general-sibling h3 ~ p {
+      color: green;
+    }
+
+    .parent-child > .child {
+      color: orange;
+    }
+
+    [type="text"] {
+      border: none;
+      border-bottom: 2px solid black;
+    }
+
+    [type="text"]:focus {
+      border: none;
+      outline: none;
+      border-bottom: 2px solid green;
+    }
+
+    .container {
+      position: relative;
+      width: max-content;
+    }
+    .main-link {
+      font-size: 2rem;
+      font-weight: 400;
+      font-family: "Times New Roman", Times, serif;
+      color: rgb(8, 68, 8);
+      position: relative;
+      padding: 4px 0px;
+    }
+    .main-link::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: green;
+      height: 4%;
+      width: 0%;
+      z-index: 1;
+      transition: 500ms linear;
+    }
+    .main-link:hover::before {
+      width: 100%;
+    }
+
+    .main-link::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: green;
+      height: 4%;
+      width: 0%;
+      z-index: 1;
+      transition: 500ms linear;
+    }
+    .main-link:hover::after {
+      width: 100%;
+    }
+  </style>
+  <body>
+    <hr />
+    <div class="adjecent-sibling">
+      <h3 class="sibling1">Hii Im first Sibling</h3>
+      <p class="sibling2">Hii Im second Sibling</p>
+    </div>
+    <hr />
+
+    <div class="general-sibling">
+      <h3 class="sibling1">Hii Im first Sibling</h3>
+      <p class="sibling2">Hii Im second Sibling</p>
+    </div>
+
+    <hr />
+
+    <div class="parent-child">
+      <h4 class="child">Hii Im child</h4>
+    </div>
+    <hr />
+
+    <input type="text" name="" id="" placeholder="Demo Text" />
+
+    <!-- Pseudo ELements -->
+
+    <div class="container">
+      <h4 class="main-link">Don't Click Me</h4>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Even OR Odd</h1>
+    <p class="result"></p>
+
+    <script>
+      const userNum = +prompt("Enter the number");
+      const result = document.querySelector(".result");
+
+      const evenOdd = () => (userNum % 2 === 0 ? "Even" : "Odd");
+      result.innerHTML = evenOdd();
+    </script>
+  </body>
+</html>

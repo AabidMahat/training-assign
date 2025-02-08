@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function createAccount(initialAmount) {
+        return function performOperation(amount) {
+          return initialAmount + amount;
+        };
+      }
+
+      const myAccount = createAccount(2000);
+
+      //   Perform operations
+      const depositeAmount = myAccount(1000);
+
+      console.log("Amount Deposited : " + depositeAmount);
+
+      const withdrawAmount = myAccount(-500);
+
+      console.log("Amount Withdraw : " + withdrawAmount);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Validate The Date</h1>
+    <input
+      type="text"
+      name=""
+      id="date"
+      placeholder="Enter date in DD-MM-YYYY"
+    />
+    <p class="result">Loading...</p>
+
+    <button onclick="checkCalenderValidity()">Check</button>
+    <script>
+      const userDate = document.querySelector("#date");
+      const result = document.querySelector(".result");
+
+      const monthDays = {
+        1: 31,
+        2: 28,
+        3: 31,
+        4: 30,
+        5: 31,
+        6: 30,
+        7: 31,
+        8: 31,
+        9: 30,
+        10: 31,
+        11: 30,
+        12: 31,
+      };
+
+      const checkLeapYear = (year) =>
+        year % 4 === 0
+          ? year % 100 !== 0
+            ? true
+            : year % 400 == 0
+            ? true
+            : false
+          : false;
+
+      function checkCalenderValidity() {
+        const data = userDate.value.split("-");
+        const day = +data[0];
+        const month = +data[1];
+        const year = +data[2];
+
+        const dayVal = monthDays[month];
+
+        if (checkLeapYear(year)) {
+          if (day > dayVal + 1) result.innerHTML = "Not a Valid Date";
+          else result.innerHTML = "Valid Date";
+        } else {
+          if (day > dayVal) result.innerHTML = "Not a Valid Date";
+          else result.innerHTML = "Valid Date";
+        }
+      }
+
+      function a(a) {
+        console.log("Outer Function");
+        return function b(b) {
+          console.log("Inner Function");
+
+          console.log(a);
+          console.log(b);
+        };
+      }
+
+      const newFn = a("Aabid");
+      console.log(`Thus it return value :- ${newFn("Ashwini")}`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Website</title>
+    <link rel="stylesheet" href="./ecommere.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <img src="../photo1.jpg" alt="Logo" />
+        </div>
+        <nav class="content">
+          <form class="search-form">
+            <input
+              type="text"
+              placeholder="Search..."
+              aria-label="Search"
+              id="search-input"
+            />
+            <button type="submit" id="search-button">Search</button>
+          </form>
+          <button
+            class="register-button"
+            onclick="location.href='/ecommerce/registration.html'"
+          >
+            Register
+          </button>
+        </nav>
+      </header>
+
+      <main class="main">
+        <div id="add-product-dialog" class="dialog">
+          <div class="dialog-content">
+            <span class="close-button">&times;</span>
+            <h2>Add Product</h2>
+            <form id="add-product-form">
+              <label for="product-name">Product Name:</label>
+              <input
+                type="text"
+                id="product-name"
+                name="product-name"
+                required
+              />
+
+              <label for="product-category">Category:</label>
+              <select id="product-category" name="product-category" required>
+                <option value="Electronics">Electronics</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Appliance">Appliance</option>
+                <option value="Books">Books</option>
+              </select>
+
+              <label for="product-rating">Rating:</label>
+              <input
+                type="number"
+                id="product-rating"
+                name="product-rating"
+                min="1"
+                max="5"
+                required
+              />
+
+              <label for="product-price">Price:</label>
+              <input
+                type="number"
+                id="product-price"
+                name="product-price"
+                required
+              />
+
+              <label for="product-image">Image Path:</label>
+              <input
+                type="text"
+                id="product-image"
+                name="product-image"
+                required
+              />
+
+              <button type="submit">Add Product</button>
+            </form>
+          </div>
+        </div>
+        <aside class="filtering-options">
+          <h3>Add Product</h3>
+          <ul>
+            <li id="add-product">Add Product</li>
+          </ul>
+          <h3>Filter by Category</h3>
+          <ul>
+            <li id="all-products">All Products</li>
+            <li id="electronics">Electronics</li>
+            <li id="clothing">Clothing</li>
+            <li id="appliances">Home Appliances</li>
+            <li id="books">Books</li>
+          </ul>
+          <h3>Sort by</h3>
+          <ul class="sort-options">
+            <li id="sort-low-high">Price: Low to High</li>
+            <li id="sort-high-low">Price: High to Low</li>
+            <li id="rating-high-low">Rating: High to Low</li>
+            <li id="rating-low-high">Rating: Low to High</li>
+          </ul>
+        </aside>
+
+        <section class="product-list"></section>
+
+        <aside class="cart-summary">
+          <h3>Cart Summary</h3>
+          <div class="card-container">
+            <div class="cart-item">
+              <img src="../photo1.jpg" alt="Product 1" id="cart-image" />
+              <div class="cart-item-info">
+                <h4 id="cart-product-name">Product 1</h4>
+
+                <p id="cart-product-price">Price: $10.00</p>
+                <p>Quantity: 1</p>
+              </div>
+            </div>
+            <div class="cart-item">
+              <img src="../photo1.jpg" alt="Product 2" />
+              <div class="cart-item-info">
+                <h4>Product 2</h4>
+                <p>Price: $20.00</p>
+                <p>Quantity: 2</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cart-summary-footer">
+            <p>Items: <span id="summary-Quantity">3</span></p>
+            <p>Total: $<span id="summary-price">50.00</span></p>
+          </div>
+        </aside>
+      </main>
+      <footer class="footer">
+        <p>&copy; 2025 Ecommerce Website</p>
+      </footer>
+    </div>
+
+    <script src="./ecommerce.js"></script>
+  </body>
+</html>
