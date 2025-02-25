@@ -216,3 +216,25 @@ END
 Drop Trigger insufficient_balance_trigger
 Select * from Accounts_tbs;
 Update Accounts_tbs set balance =  balance -20000.00 Where account_id = 3
+
+CREATE TRIGGER audit_transaction_1 ON Transactions_tbl
+AFTER INSERT
+AS 
+BEGIN
+	declare @accountId int, @ammount decimal,@transactionDate date, @actions varchar(30)='Deposite'
+	SELECT @accountId = account_id, 
+           @ammount = ammount, 
+           @transactionDate = transaction_date 
+    FROM inserted;
+    INSERT INTO Audit_Transaction_tbs (account_id, ammount, transaction_date, actions)values(@accountId, @ammount, @transactionDate, @actions) 
+     
+END;
+
+
+
+INSERT INTO Transactions1 (account_id, transaction_type, ammount, transaction_date)
+VALUES (6, 1, 'Withdrawal', 500.00, GETDATE());
+
+
+drop trigger AuditTransactions1;
+SELECT * FROM Audit_Transactions1;
